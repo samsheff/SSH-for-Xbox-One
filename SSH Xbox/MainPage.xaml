@@ -8,9 +8,9 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
-        <TextBlock x:Name="textBlock" Margin="11,10,10,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="469"/>
-        <TextBox x:Name="textBox" Margin="10,494,10,11" Text="TextBox" TextWrapping="Wrap"/>
+    <Grid Margin="0,0,0,10">
+        <TextBox x:Name="textBox1" Margin="0,484,0,14" Text="" TextWrapping="Wrap" KeyDown="textBox1_KeyDown" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="textBox" Margin="0,0,0,62" />
 
     </Grid>
 </Page>
