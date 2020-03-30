@@ -36,7 +36,7 @@ namespace SSH_Xbox
 
         private void ConnectToHost()
         {
-            this.client = new SshClient("box.vsl.sh", "root", "yL5,dmAEh(fd!N)s");
+            this.client = new SshClient(host, username, password);
             this.textBox.Text += "\nConnecting to Server...";
             this.client.Connect();
             this.textBox.Text += "\nConnected! Opening Shell Stream...";
