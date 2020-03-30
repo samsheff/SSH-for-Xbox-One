@@ -40,7 +40,7 @@ namespace SSH_Xbox
             this.textBox.Text += "\nConnecting to Server...";
             this.client.Connect();
             this.textBox.Text += "\nConnected! Opening Shell Stream...";
-            this.shell = this.client.CreateShellStream("xbox", 256, 512, (uint)((Frame)Window.Current.Content).ActualWidth, (uint)((Frame)Window.Current.Content).ActualHeight, 512);
+            this.shell = this.client.CreateShellStream("cygwin", 256, 512, (uint)((Frame)Window.Current.Content).ActualWidth, (uint)((Frame)Window.Current.Content).ActualHeight, 512);
 
             this.connected = true;
 
@@ -56,7 +56,7 @@ namespace SSH_Xbox
                     var result = new byte[this.shell.Length];
                     await this.shell.ReadAsync(result, 0, (int)this.shell.Length);
 
-                    string console = this.textBox.Text += System.Text.Encoding.ASCII.GetString(result);
+                    string console = System.Text.Encoding.ASCII.GetString(result);
 
                     this.textBox.Text = console.GetLastLines(GetNumberOfVerticalLines());
                 } else
@@ -68,7 +68,7 @@ namespace SSH_Xbox
 
         private int GetNumberOfVerticalLines()
         {
-            return (int)((((Frame)Window.Current.Content).ActualHeight - textBox.ActualHeight) / 5);
+            return (int)((((Frame)Window.Current.Content).ActualHeight - textBox.ActualHeight) / 20);
         }
 
         private void textBox1_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -80,6 +80,7 @@ namespace SSH_Xbox
                 {
                     if (host == "")
                     {
+                        var lines = GetNumberOfVerticalLines();
                         host = textBox1.Text;
                         textBox1.Text = "";
                         textBox.Text += "\nUsername: ";
